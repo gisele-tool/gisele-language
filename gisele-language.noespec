@@ -1,0 +1,24 @@
+template-info:
+  name: "rubygem.noe"
+  version: 2.0.0
+variables:
+  lower:
+    gisele-language
+  upper:
+    Gisele::Language
+  version:
+    0.5.0
+  summary: |-
+    The Gisele Process Modeling Language
+  description: |-
+    Provides the parser + compiler infrastructure for the Gisele process modeling language.
+  authors:
+    - {name: Bernard Lambeau, email: blambeau@gmail.com}
+  links:
+    - https://github.com/blambeau/gisele-language
+  dependencies:
+  - {name: citrus,        version: "~> 2.4",    groups: [runtime]}
+  - {name: path,          version: "~> 1.2",    groups: [runtime]}
+  - {name: sexpr,         version: "~> 0.5.0",  groups: [runtime]}
+  - {name: rake,          version: "~> 0.9.2",  groups: [development]}
+  - {name: rspec,         version: "~> 2.11",   groups: [development]}

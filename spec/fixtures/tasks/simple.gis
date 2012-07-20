@@ -1,0 +1,16 @@
+task Simple
+
+  fluent diagKnown
+    {Diagnosis:start},
+    {Treatment:end}
+
+  seq
+    if not(diagKnown)
+      Diagnosis
+    else
+      NoDiag
+    end
+    Treatment
+  end
+
+end
