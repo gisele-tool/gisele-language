@@ -7,7 +7,7 @@ variables:
   upper:
     Gisele::Language
   version:
-    0.5.1
+    0.6.0
   summary: |-
     The Gisele Process Modeling Language
   description: |-
