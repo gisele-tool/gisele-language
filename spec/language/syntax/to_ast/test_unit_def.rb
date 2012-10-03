@@ -12,17 +12,5 @@ module Gisele::Language::Syntax
       ast(expr, :unit_def).should eq(expected)
     end
 
-    it 'accepts multiple task definitions' do
-      expr = <<-UNIT.strip
-        task Task1 end
-        task Task2 end
-      UNIT
-      expected = \
-        [:unit_def,
-          [:task_def, "Task1", [:nop_st]],
-          [:task_def, "Task2", [:nop_st]] ]
-      ast(expr, :unit_def).should eq(expected)
-    end
-
   end
 end

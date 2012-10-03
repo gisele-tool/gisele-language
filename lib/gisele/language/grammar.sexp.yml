@@ -3,7 +3,7 @@ parser:
 rules:
   ### units and tasks
   unit_def:
-    - [task_def+]
+    - [ task_def ]
   task_def:
     - [task_name, some_def*, statement]
   some_def:

@@ -9,18 +9,10 @@ module Gisele::Language
       parse(expr, :unit_def).should eq(expr)
     end
 
-    it 'accepts multiple task definitions' do
-      expr = <<-UNIT.strip
-        task Task1 end
-        task Task2 end
-      UNIT
-      parse(expr, :unit_def).should eq(expr)
-    end
-
     it 'allows trailing spaces' do
       expr = <<-UNIT
         task Task1 end
-        task Task2 end
+
       UNIT
       parse(expr, :unit_def).should eq(expr)
     end
