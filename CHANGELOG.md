@@ -1,4 +1,4 @@
-# 0.6.0 / FIX ME
+# 0.6.0 / 2012-10-16
 
 * Breaking change: removed the ability to define multiple tasks in a single unit
 
