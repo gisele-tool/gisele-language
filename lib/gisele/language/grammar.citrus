@@ -10,7 +10,7 @@ grammar Gisele::Language::Grammar
   ### Task definitions
 
   rule task_def
-    ('task' spaces task_name spaces 
+    ('task' spaces task_name spaces
       (some_def spaces)*
       (explicit_statement spaces)?
     'end')
