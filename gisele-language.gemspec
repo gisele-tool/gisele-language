@@ -123,11 +123,11 @@ Gem::Specification.new do |s|
   # One call to add_development_dependency('gem_name', 'gem version requirement')
   # for each development dependency. These gems are required for developers
   #
-  s.add_development_dependency("rake", "~> 0.9.2")
-  s.add_development_dependency("rspec", "~> 2.11")
+  s.add_development_dependency("rake", "~> 10.0")
+  s.add_development_dependency("rspec", "~> 2.14")
   s.add_dependency("citrus", "~> 2.4")
-  s.add_dependency("path", "~> 1.2")
-  s.add_dependency("sexpr", "~> 0.5.0")
+  s.add_dependency("path", "~> 1.3")
+  s.add_dependency("sexpr", "~> 0.6.0")
 
   # The version of ruby required by this gem
   #
