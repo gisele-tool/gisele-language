@@ -33,6 +33,7 @@ rules:
     - while_st
     - seq_st
     - par_st
+    - times_st
     - task_call_st
     - nop_st
   if_st:
@@ -45,6 +46,8 @@ rules:
     - [statement+]
   par_st:
     - [statement+]
+  times_st:
+    - [posint_literal, statement]
   task_call_st:
     - [task_name]
   nop_st:
@@ -100,6 +103,8 @@ rules:
     - true
     - false
   integer_literal:
+    '::Integer'
+  posint_literal:
     '::Integer'
   string_literal:
     '::String'

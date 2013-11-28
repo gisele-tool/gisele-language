@@ -43,6 +43,7 @@ grammar Gisele::Language::Grammar
     | while_st
     | seq_st
     | par_st
+    | times_st
     | task_call_st
   end
 
@@ -91,6 +92,11 @@ grammar Gisele::Language::Grammar
   rule par_st
     ('par' spaces st_list spaces 'end')
     <Gisele::Language::Syntax::ParSt>
+  end
+
+  rule times_st
+    (posint_literal spaces 'x' spaces st:explicit_statement)
+    <Gisele::Language::Syntax::TimesSt>
   end
 
   rule task_call_st
@@ -241,6 +247,10 @@ grammar Gisele::Language::Grammar
 
   rule integer_literal
     ('-'? [1-9] [0-9]* | '0'){ Integer(strip) }
+  end
+
+  rule posint_literal
+    ([1-9] [0-9]* | '0'){ Integer(strip) }
   end
 
   ### Names
