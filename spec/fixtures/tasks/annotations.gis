@@ -1,0 +1,9 @@
+task Annotations
+  @agents { "Patient", "Nurse" }
+  @duration 1..2 [hour]
+  @dosage {
+    { drug "Fluorouracil",     dose 500 [mg/m2] }
+    { drug "Epirubicin",       dose  50 [mg/m2] }
+    { drug "Cyclophosphamide", dose 400 [mg/m2] }
+  }
+end

@@ -1,14 +1,14 @@
 module Gisele
   module Language
     module Syntax
-      module ParSt
+      module Tuple
         include Node
 
         def _to_ast
-          Array(captures[:st_list]).first.value.unshift(:par_st)
+          Array(captures[:attribute]).map(&:to_ast).unshift(:tuple)
         end
 
-      end # module ParSt
+      end # module Tuple
     end # module Syntax
   end # module Language
 end # module Gisele

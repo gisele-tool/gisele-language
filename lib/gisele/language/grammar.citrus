@@ -18,7 +18,7 @@ grammar Gisele::Language::Grammar
   end
 
   rule some_def
-    fluent_def | trackvar_def | task_def
+    fluent_def | trackvar_def | annotation_def | task_def
   end
 
   ### Process statements
@@ -177,6 +177,72 @@ grammar Gisele::Language::Grammar
     task_name ':' ('start' | 'end')
   end
 
+  ### Annotations
+
+  rule annotation_def
+    ('@' annotation_name spaces val:value)
+    <Gisele::Language::Syntax::AnnotationDef>
+  end
+
+  ### Values
+
+  rule value
+      set
+    | tuple
+    | range
+    | scalar
+  end
+
+  rule set
+    ('{' spacing (value (comma value)*)? spacing '}')
+    <Gisele::Language::Syntax::Set>
+  end
+
+  rule tuple
+    ('{' spacing (attribute (comma attribute)*)? spacing '}')
+    <Gisele::Language::Syntax::Tuple>
+  end
+
+  rule attribute
+    (annotation_name spaces val:value)
+    <Gisele::Language::Syntax::Attribute>
+  end
+
+  rule range
+    (left:value_literal mid:([.]2*3) right:value_literal (spaces unit)?)
+    <Gisele::Language::Syntax::Range>
+  end
+
+  rule scalar
+    (value_literal (spaces unit)?)
+    <Gisele::Language::Syntax::Scalar>
+  end
+
+  rule unit
+    ('[' unit_name ']')
+    <Gisele::Language::Syntax::Unit>
+  end
+
+  ### Literals
+
+  rule value_literal
+      boolean_literal
+    | string_literal
+    | integer_literal
+  end
+
+  rule boolean_literal
+    ('true' | 'false'){ strip == "true" }
+  end
+
+  rule string_literal
+    (["] ([\\] ["] | !["] .)* ["]){ strip[1...-1].gsub(/\\["]/, '"') }
+  end
+
+  rule integer_literal
+    ('-'? [1-9] [0-9]* | '0'){ Integer(strip) }
+  end
+
   ### Names
   
   rule task_name
@@ -187,17 +253,23 @@ grammar Gisele::Language::Grammar
     !(reserved_word spaces) [a-z] [A-Za-z0-9_]*
   end
 
+  rule annotation_name
+    !(reserved_word spaces) [a-z] [A-Za-z0-9_]*
+  end
+
   rule event_name
     !(reserved_word spaces) [a-z] [a-z0-9_]*
   end
 
-  ### Literals
-
-  rule boolean_literal
-    ('true' | 'false'){ strip == "true" }
+  rule unit_name
+    !(reserved_word spaces) [a-z0-9_/]+
   end
 
   ### Spacing
+
+  rule comma
+    spacing (',' spacing)?
+  end
 
   rule comment
     "#" (![\n] .)*

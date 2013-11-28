@@ -1,14 +1,14 @@
 module Gisele
   module Language
     module Syntax
-      module ParSt
+      module Unit
         include Node
 
         def _to_ast
-          Array(captures[:st_list]).first.value.unshift(:par_st)
+          [:unit, unit_name]
         end
 
-      end # module ParSt
+      end # module Unit
     end # module Syntax
   end # module Language
 end # module Gisele

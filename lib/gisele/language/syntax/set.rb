@@ -1,14 +1,14 @@
 module Gisele
   module Language
     module Syntax
-      module ParSt
+      module Set
         include Node
 
         def _to_ast
-          Array(captures[:st_list]).first.value.unshift(:par_st)
+          Array(captures[:value]).map(&:to_ast).unshift(:set)
         end
 
-      end # module ParSt
+      end # module Set
     end # module Syntax
   end # module Language
 end # module Gisele

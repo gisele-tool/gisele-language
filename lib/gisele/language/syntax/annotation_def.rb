@@ -1,14 +1,14 @@
 module Gisele
   module Language
     module Syntax
-      module ParSt
+      module AnnotationDef
         include Node
 
         def _to_ast
-          Array(captures[:st_list]).first.value.unshift(:par_st)
+          [:annotation_def, annotation_name.to_sym, val.to_ast]
         end
 
-      end # module ParSt
+      end # module AnnotationDef
     end # module Syntax
   end # module Language
 end # module Gisele

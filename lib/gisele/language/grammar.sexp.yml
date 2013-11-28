@@ -10,6 +10,7 @@ rules:
     - fluent_def
     - trackvar_def
     - task_def
+    - annotation_def
   ### variables
   fluent_def:
     - [var_name, event_set, event_set, initially]
@@ -22,6 +23,9 @@ rules:
     - task_event_name
   var_ref:
     - [var_name]
+  ### annotations
+  annotation_def:
+    - [annotation_name, value]
   ### statements
   statement:
     - if_st
@@ -69,14 +73,43 @@ rules:
     - [bool_expression]
   bool_lit:
     - [ boolean_literal  ]
+  ### values
+  value:
+    - set
+    - tuple
+    - range
+    - scalar
+  set:
+    - [value+]
+  tuple:
+    - [attribute+]
+  attribute:
+    - [annotation_name, value]
+  range:
+    - [range_literal, unit]
+  scalar:
+    - [value_literal, unit]
+  unit:
+    - [unit_name]
+  ### literals
+  value_literal:
+    - boolean_literal
+    - integer_literal
+    - string_literal
   boolean_literal:
     - true
     - false
+  integer_literal:
+    '::Integer'
+  string_literal:
+    '::String'
   ### terminals
   task_name:       !ruby/regexp /^[A-Z][A-Za-z0-9_]*$/
   var_name:        !ruby/regexp /^[a-z][A-Za-z0-9_]*$/
   event_name:      !ruby/regexp /^[a-z][a-z0-9_]*$/
   task_event_name: !ruby/regexp /^[A-Z][A-Za-z0-9_]*:(start|end)$/
+  annotation_name: !ruby/regexp /^[a-z][A-Za-z0-9_]*$/
+  unit_name:       !ruby/regexp /^[a-z0-9_/]+$/
   initially:
     - true
     - false

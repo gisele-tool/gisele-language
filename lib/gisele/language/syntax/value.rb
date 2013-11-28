@@ -1,14 +1,14 @@
 module Gisele
   module Language
     module Syntax
-      module ParSt
+      module Value
         include Node
 
         def _to_ast
-          Array(captures[:st_list]).first.value.unshift(:par_st)
+          raise NotImplementedError
         end
 
-      end # module ParSt
+      end # module Value
     end # module Syntax
   end # module Language
 end # module Gisele

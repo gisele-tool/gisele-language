@@ -18,7 +18,17 @@ end # module Gisele
 require_relative 'event_set'
 require_relative 'fluent_def'
 require_relative 'trackvar_def'
+require_relative 'annotation_def'
 require_relative 'var_ref'
+
+require_relative 'value'
+require_relative 'set'
+require_relative 'tuple'
+require_relative 'attribute'
+require_relative 'range'
+require_relative 'scalar'
+require_relative 'unit'
+
 require_relative 'bool_lit'
 require_relative 'bool_paren'
 require_relative 'bool_not'

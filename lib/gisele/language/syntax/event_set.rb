@@ -5,8 +5,7 @@ module Gisele
         include Node
 
         def _to_ast
-          events = (captures[:event] || []).map{|e| e.value}
-          [:event_set] + events
+          Array(captures[:event]).map(&:value).unshift(:event_set)
         end
 
       end # module EventSet
