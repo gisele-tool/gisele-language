@@ -5,7 +5,7 @@ describe Gisele do
   describe "parse" do
 
     it 'works with a file' do
-      parsed = parse(fixtures_dir/:tasks/"simple.gis")
+      parsed = parse(fixtures_dir/"simple.gis")
       parsed.should be_a(Citrus::Match)
     end
 

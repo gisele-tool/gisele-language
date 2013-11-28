@@ -29,11 +29,11 @@ module SpecHelpers
   end
 
   def simple_ast
-    Gisele::ast(fixtures_dir/:tasks/"simple.gis")
+    Gisele::ast(fixtures_dir/"simple.gis")
   end
 
   def complete_ast
-    Gisele::ast(fixtures_dir/:tasks/"complete.gis")
+    Gisele::ast(fixtures_dir/"complete.gis")
   end
 
 end
